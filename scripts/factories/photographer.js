@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+export function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
    
     const picture = `assets/photographers/${portrait}`;
@@ -7,11 +7,11 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const anchor = document.createElement('a');
         anchor.setAttribute("href", "photographer.html?id=" + id);
+        anchor.setAttribute("aria-label", name);
         const article = document.createElement( 'article' );
-        article.setAttribute("id", id);
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute('alt', 'Image de ' + name);
+        img.setAttribute('alt', name);
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const place = document.createElement('p');
@@ -31,5 +31,18 @@ function photographerFactory(data) {
         anchor.appendChild(article);
         return (anchor);
     }
-    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM }
+    function getIdentityData() {
+        const blocIdentity = document.createElement('div');
+        const namePhotographer = document.createElement('h1');
+        namePhotographer.textContent = name;
+        const placePhotographer = document.createElement('p');
+        placePhotographer.textContent = city + ', ' + country;
+        const taglinePhotographer = document.createElement('p');
+        taglinePhotographer.textContent = tagline;
+        blocIdentity.appendChild(namePhotographer);
+        blocIdentity.appendChild(placePhotographer);
+        blocIdentity.appendChild(taglinePhotographer);
+        return (blocIdentity);
+    }
+    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM, getIdentityData }
 }

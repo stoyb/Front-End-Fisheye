@@ -1,4 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
+import { photographerFactory } from "../factories/photographer.js";
 
 function getParamsId() {
     const urlSearchParams =  new URL(document.location).searchParams;
@@ -7,14 +8,11 @@ function getParamsId() {
 }
 async function getPhotographerById(id) {
     const photographers = await getPhotographers();
-    for(i = 0; i < photographers.length; i++) {
+    for(let i = 0; i < photographers.length; i++) {
       if (id == photographers[i].id) {
        return photographers[i]
        }
      }
-}
-async function getArray() {
-   return await getPhotographerById(getParamsId());
 }
 
 async function getPhotographers() {
@@ -42,21 +40,18 @@ async function getPhotographers() {
     return dataAPI.photographers
 }
 
-async function photoFactory(data) {
-    const { name, city, country, tagline } = data;
-    const array = await getArray();
-    function getIdentityData() {
-        const blocIdentity = document.createElement('div');
-        const namePhotographer = document.createElement('h1');
-        namePhotographer.textContent = array.name;
-        const placePhotographer = document.createElement('p');
-        placePhotographer.textContent = array.city + ', ' + array.country;
-        const taglinePhotographer = document.createElement('p');
-        taglinePhotographer.textContent = array.tagline;
-        blocIdentity.appendChild(namePhotographer);
-        blocIdentity.appendChild(placePhotographer);
-        blocIdentity.appendChild(taglinePhotographer);
-        return (blocIdentity);
-    }
-    return { name, city, country, tagline, getIdentityData }
-}
+async function displayDataPhotographer(photographer) {
+    const photographersSection = document.querySelector(".photograph-header");
+    const photographerModel = photographerFactory(photographer);
+    const userCardDOM = photographerModel.getIdentityData();
+    photographersSection.appendChild(userCardDOM);
+  };
+
+  async function init() {   
+    const idPhotographer  = getParamsId();
+    const photographer = await getPhotographerById(idPhotographer);
+    displayDataPhotographer(photographer);
+};
+
+init();
+

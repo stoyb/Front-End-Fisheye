@@ -9,25 +9,25 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye" />
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button aria-label="Contacter le photographe" class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer la modale" />
         </header>
 				<form>
 					<div>
 						<label>Prénom</label>
 						<input />
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="Envoyer le formulaire">Envoyer</button>
 				</form>
 			</div>
 		</div>

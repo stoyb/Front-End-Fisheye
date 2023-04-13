@@ -33,16 +33,56 @@ export function photographerFactory(data) {
     }
     function getIdentityData() {
         const blocIdentity = document.createElement('div');
+        blocIdentity.classList.add('bloc-identity');
         const namePhotographer = document.createElement('h1');
         namePhotographer.textContent = name;
         const placePhotographer = document.createElement('p');
         placePhotographer.textContent = city + ', ' + country;
+        placePhotographer.classList.add('place-photographer')
         const taglinePhotographer = document.createElement('p');
         taglinePhotographer.textContent = tagline;
+        taglinePhotographer.classList.add('tagline-photographer');
         blocIdentity.appendChild(namePhotographer);
         blocIdentity.appendChild(placePhotographer);
         blocIdentity.appendChild(taglinePhotographer);
         return (blocIdentity);
     }
-    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM, getIdentityData }
+     function getImg() {
+        const blocImg = document.createElement('div');
+        blocImg.classList.add('bloc-img');
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        img.setAttribute('alt', name);
+        blocImg.appendChild(img);
+        return(blocImg)
+     }
+    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM, getIdentityData, getImg }
+}
+
+export function mediaFactory(data) {
+    const { id, photographerId, title, image, video, likes, date, price } = data;
+    
+    const picture = `assets/images/sample/${photographerId}/${image}`;
+    const videoPlayer = `assets/images/sample/${photographerId}/${video}`;
+    const blocPhoto = document.createElement('div');
+    const blocVideo = document.createElement('div');
+    
+    function getMediaImg() {
+        const img = document.createElement('img');
+        blocPhoto.classList.add('bloc-image');
+        img.setAttribute('src', picture);
+        img.setAttribute('alt', "picture");
+        blocPhoto.appendChild(img);
+        return (blocPhoto)
+    }
+    function getMediaVideo() {
+        const videoItem = document.createElement('video');
+        blocVideo.classList.add('bloc-video')
+        videoItem.setAttribute('src', videoPlayer);
+        videoItem.setAttribute('alt', "video");
+        videoItem.setAttribute('controls', '');
+        blocVideo.appendChild(videoItem);
+        return (blocVideo)
+    }
+    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo }
 }

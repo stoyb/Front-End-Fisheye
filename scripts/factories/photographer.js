@@ -3,7 +3,6 @@ export function photographerFactory(data) {
    
     const picture = `assets/photographers/${portrait}`;
     
-    
     function getUserCardDOM() {
         const anchor = document.createElement('a');
         anchor.setAttribute("href", "photographer.html?id=" + id);
@@ -72,7 +71,23 @@ export function mediaFactory(data) {
         blocPhoto.classList.add('bloc-image');
         img.setAttribute('src', picture);
         img.setAttribute('alt', "picture");
+        const mediaLegend = document.createElement('div');
+        mediaLegend.classList.add('media-legend');
+        const imgTitle = document.createElement('p');
+        imgTitle.classList.add('media-legend__title');
+        imgTitle.textContent = title; 
+        const iconHeart = document.createElement('i');
+        iconHeart.classList.add("fa", "fa-heart");
+        const imgLikes = document.createElement('p');
+        imgLikes.classList.add('media-legend__likes');
+        imgLikes.textContent = likes + " ";
+        const iconContainer = document.createElement('span');
+        iconContainer.appendChild(iconHeart);
+        imgLikes.appendChild(iconContainer);
+        mediaLegend.appendChild(imgTitle);
+        mediaLegend.appendChild(imgLikes);
         blocPhoto.appendChild(img);
+        blocPhoto.appendChild(mediaLegend);
         return (blocPhoto)
     }
     function getMediaVideo() {
@@ -81,7 +96,24 @@ export function mediaFactory(data) {
         videoItem.setAttribute('src', videoPlayer);
         videoItem.setAttribute('alt', "video");
         videoItem.setAttribute('controls', '');
+        const mediaLegend = document.createElement('div');
+        mediaLegend.classList.add('media-legend');
+        const videoTitle = document.createElement('p');
+        videoTitle.classList.add('media-legend__title');
+        videoTitle.textContent = title; 
+        const iconHeart = document.createElement('i');
+        iconHeart.classList.add("fa", "fa-heart");
+        const videoLikes = document.createElement('p');
+        videoLikes.classList.add('media-legend__likes');
+        videoLikes.textContent = likes + " ";
+        const iconContainer = document.createElement('span');
+        iconContainer.appendChild(iconHeart);
+        videoLikes.appendChild(iconContainer);
+        mediaLegend.appendChild(videoTitle);
+        mediaLegend.appendChild(videoLikes);
         blocVideo.appendChild(videoItem);
+        blocVideo.appendChild(mediaLegend);
+        
         return (blocVideo)
     }
     return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo }

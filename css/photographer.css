@@ -112,12 +112,13 @@ form input {
     border-radius: 5px;
 }
 
-.bloc-image > img, .bloc-video > video {
+
+.bloc-image  img, .bloc-video  video {
     width: 236px;
     height: 216px;
 }
 
-.bloc-image > img {
+.bloc-image  img {
     border-radius: 5px;
    
 }
@@ -160,7 +161,7 @@ form input {
     background-color: #DB8876;
     position:fixed;
     bottom: 0;
-    left: 75%;
+    left: 77%;
     padding: 0 24px;
 }
 

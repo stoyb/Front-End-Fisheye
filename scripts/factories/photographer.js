@@ -1,5 +1,5 @@
 import { mediaLikesResults }  from "../pages/photographer.js"
-
+import { priceArray } from "../pages/photographer.js"
 export function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
    
@@ -67,8 +67,10 @@ export function mediaFactory(data) {
     const videoPlayer = `assets/images/sample/${photographerId}/${video}`;
     const blocPhoto = document.createElement('div');
     const blocVideo = document.createElement('div');
-    
     function getMediaImg() {
+        const anchor = document.createElement('a');
+        anchor.setAttribute("aria-label", title + ", closeup view");
+        anchor.setAttribute("href", "#");
         const img = document.createElement('img');
         blocPhoto.classList.add('bloc-image');
         img.setAttribute('src', picture);
@@ -80,6 +82,7 @@ export function mediaFactory(data) {
         imgTitle.textContent = title; 
         const iconHeart = document.createElement('i');
         iconHeart.classList.add("fa", "fa-heart");
+        iconHeart.setAttribute("aria-label", "likes");
         const imgLikes = document.createElement('p');
         imgLikes.classList.add('media-legend__likes');
         imgLikes.textContent = likes + " ";
@@ -88,15 +91,17 @@ export function mediaFactory(data) {
         imgLikes.appendChild(iconContainer);
         mediaLegend.appendChild(imgTitle);
         mediaLegend.appendChild(imgLikes);
-        blocPhoto.appendChild(img);
+        anchor.appendChild(img);
+        blocPhoto.appendChild(anchor);
         blocPhoto.appendChild(mediaLegend);
         return (blocPhoto)
     }
     function getMediaVideo() {
+        const anchor = document.createElement('a');
+        anchor.setAttribute("aria-label", title + ", closeup view");
         const videoItem = document.createElement('video');
         blocVideo.classList.add('bloc-video');
         videoItem.setAttribute('src', videoPlayer);
-        videoItem.setAttribute('alt', "video");
         videoItem.setAttribute('controls', '');
         const mediaLegend = document.createElement('div');
         mediaLegend.classList.add('media-legend');
@@ -105,15 +110,17 @@ export function mediaFactory(data) {
         videoTitle.textContent = title; 
         const iconHeart = document.createElement('i');
         iconHeart.classList.add("fa", "fa-heart");
+        iconHeart.setAttribute("aria-label", "likes");
         const videoLikes = document.createElement('p');
         videoLikes.classList.add('media-legend__likes');
         videoLikes.textContent = likes + " ";
         const iconContainer = document.createElement('span');
+        anchor.appendChild(videoItem);
         iconContainer.appendChild(iconHeart);
         videoLikes.appendChild(iconContainer);
         mediaLegend.appendChild(videoTitle);
         mediaLegend.appendChild(videoLikes);
-        blocVideo.appendChild(videoItem);
+        blocVideo.appendChild(anchor);
         blocVideo.appendChild(mediaLegend);
         return (blocVideo)
     }
@@ -125,9 +132,10 @@ export function mediaFactory(data) {
         blocLikes.classList.add('bloc-likes');
         const iconHeart = document.createElement('i');
         iconHeart.classList.add("fa", "fa-heart");
+        iconHeart.setAttribute("aria-label", "likes");
         blocLikes.textContent = mediaLikesResults + " ";
         const blocLikesPrice = document.createElement('p');
-        blocLikesPrice.textContent = 300 + "€/jour";
+        blocLikesPrice.textContent = priceArray + "€/jour";
         const iconContainer = document.createElement('span');
         iconContainer.appendChild(iconHeart);
         blocLikes.appendChild(iconContainer);

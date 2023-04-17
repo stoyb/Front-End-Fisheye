@@ -53,6 +53,20 @@ async function getMediaArraysById(id) {
     return addLikes
 }
 
+async function getPriceFromArray(photographer) {
+    if (!photographer) {
+        return 0;
+    }
+    let getPrice = 0; 
+        if (photographer.price) {
+            getPrice += photographer.price;
+        }
+    return getPrice 
+  }
+
+  export let priceArray = await getPriceFromArray( await getPhotographerById(getParamsId()));
+  
+
   
   async function getPhotographers() {
       const response = await fetch("../data/photographers.json"); 
@@ -80,7 +94,7 @@ async function getMediaArraysById(id) {
     };
     
     async function displayMediaImg(photographers) {
-        const photographersSection = document.querySelector("#main");
+        const photographersSection = document.querySelector("#main-photographer");
         const bloc = document.createElement('div');
         bloc.classList.add("contain-media");
         photographersSection.appendChild(bloc);
@@ -102,7 +116,7 @@ async function getMediaArraysById(id) {
     };
 
     async function displayMediaLikes(photographers) {
-        const bloc = document.querySelector("#main");
+        const bloc = document.querySelector("#main-photographer");
         const mediaModel = mediaFactory(photographers);
         const userMedia = mediaModel.encartLikes();
         bloc.appendChild(userMedia);

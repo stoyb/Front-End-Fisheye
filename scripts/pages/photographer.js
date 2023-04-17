@@ -22,8 +22,6 @@ async function getMediaArraysById(id) {
     return filteredArrays;
   }
 
-  console.log(await getVideoFromArray(await getMediaArraysById(getParamsId())));
-
   async function getImageFromArray(media) {
     const getImage = [];  
     media.forEach((item) => {
@@ -43,6 +41,17 @@ async function getMediaArraysById(id) {
     });
     return getVideo
   }
+
+  async function addMediaLikes(media){
+    let addLikes = 0;  
+    media.forEach((item) => {
+        if (item.likes) {
+            addLikes += item.likes;
+        }
+    });
+    
+    return addLikes
+}
 
   
   async function getPhotographers() {
@@ -91,18 +100,31 @@ async function getMediaArraysById(id) {
            
         });
     };
+
+    async function displayMediaLikes(photographers) {
+        const bloc = document.querySelector("#main");
+        const mediaModel = mediaFactory(photographers);
+        const userMedia = mediaModel.encartLikes();
+        bloc.appendChild(userMedia);
+    };
+
+    export const mediaLikesResults = await addMediaLikes(await getMediaArraysById(getParamsId()));
+   // Additionner les likes 
     
-    
-    async function init() {   
-        const idPhotographer  = getParamsId();
-        const photographer = await getPhotographerById(idPhotographer);
-        const media = await getMediaArraysById(idPhotographer);
-        const imageFromArray = await getImageFromArray(media);
-        const videoFromArray = await getVideoFromArray(media);
-        displayDataPhotographer(photographer);
-        displayImgPhotographer(photographer);
-        displayMediaImg(imageFromArray);
-        displayMediaVideo(videoFromArray);
+   
+   async function init() {  
+
+       const idPhotographer  = getParamsId(); 
+       const photographer = await getPhotographerById(idPhotographer);
+       const media = await getMediaArraysById(idPhotographer);
+       const imageFromArray = await getImageFromArray(media);
+       const videoFromArray = await getVideoFromArray(media);
+       const  mediaLikes = await addMediaLikes(media);
+       displayDataPhotographer(photographer);
+       displayImgPhotographer(photographer);
+       displayMediaImg(imageFromArray);
+       displayMediaVideo(videoFromArray);
+       displayMediaLikes(mediaLikes);
     };
     
     init();

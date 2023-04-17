@@ -1,3 +1,5 @@
+import { mediaLikesResults }  from "../pages/photographer.js"
+
 export function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
    
@@ -92,7 +94,7 @@ export function mediaFactory(data) {
     }
     function getMediaVideo() {
         const videoItem = document.createElement('video');
-        blocVideo.classList.add('bloc-video')
+        blocVideo.classList.add('bloc-video');
         videoItem.setAttribute('src', videoPlayer);
         videoItem.setAttribute('alt', "video");
         videoItem.setAttribute('controls', '');
@@ -113,8 +115,25 @@ export function mediaFactory(data) {
         mediaLegend.appendChild(videoLikes);
         blocVideo.appendChild(videoItem);
         blocVideo.appendChild(mediaLegend);
-        
         return (blocVideo)
     }
-    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo }
+
+    function encartLikes() {
+        const blocEncart = document.createElement('div');
+        blocEncart.classList.add('bloc-encart');
+        const blocLikes = document.createElement('div');
+        blocLikes.classList.add('bloc-likes');
+        const iconHeart = document.createElement('i');
+        iconHeart.classList.add("fa", "fa-heart");
+        blocLikes.textContent = mediaLikesResults + " ";
+        const blocLikesPrice = document.createElement('p');
+        blocLikesPrice.textContent = 300 + "€/jour";
+        const iconContainer = document.createElement('span');
+        iconContainer.appendChild(iconHeart);
+        blocLikes.appendChild(iconContainer);
+        blocEncart.appendChild(blocLikes);
+        blocEncart.appendChild(blocLikesPrice);
+        return (blocEncart)
+    }
+    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo, encartLikes }
 }

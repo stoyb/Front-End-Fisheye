@@ -9,6 +9,7 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+    <div aria-hidden="false" class="wrapper">
     <header>
       <a href="../index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
@@ -16,25 +17,36 @@
     </header>
     <main id="main-photographer">
       <div class="photograph-header">
-        <button aria-label="Contact me" class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button aria-label="Contact me" class="contact_button">Contactez-moi</button>
+      </div>
+      <div class="lightbox">
       </div>
     </main>
+    </div>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer la modale" />
+				<header id="header-modal">
+          <div id="header-modal__title">
+            <h2>Contactez-moi</h2>
+          </div>
+          <img src="assets/icons/close.svg" class="close-modal" alt="Close Contact form" />
         </header>
-				<form>
+				<form id="form-modal" name="reserve">
 					<div>
-						<label>Prénom</label>
-						<input />
+						  <label>Prénom</label>
+              <input name="firstName" />
+              <label>Nom</label>
+              <input name="lastName" />
+              <label>Email</label>
+              <input name="email" />
+              <label>Votre message</label>
+              <textarea name="message"></textarea>
 					</div>
-          <button class="contact_button" aria-label="Envoyer le formulaire">Envoyer</button>
+          <button type="submit" name="submit" value="Submit" class="contact_button" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script type="module" src="scripts/pages/photographer.js"></script>
     <script type="module" src="scripts/utils/contactForm.js"></script>
+    <script type="module" src="scripts/pages/photographer.js"></script>
   </body>
 </html>

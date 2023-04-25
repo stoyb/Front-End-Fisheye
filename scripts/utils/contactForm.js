@@ -4,6 +4,11 @@ const closeWithShadow = document.querySelector('#contact_modal');
 const bodyModal = document.querySelector(".modal");
 const formModal = document.getElementById("form-modal");
 const sendButton = document.forms["reserve"]["submit"];
+const lightboxContainer = document.querySelector('#lightbox'); 
+const carrouselModal = document.querySelector('carousel');
+const blocImg = document.getElementsByClassName('.bloc-image');
+console.log(blocImg); 
+
 
 function displayModal() {
     const modal = document.getElementById("contact_modal");
@@ -22,9 +27,19 @@ function myFunction(e) {
   console.log(Object.fromEntries(formData)); 
   }
 
+  function openLightbox() {
+    lightboxContainer.style.display = "block";
+   
+  }
+
 buttonOpen.addEventListener('click', displayModal);
 buttonClose.addEventListener('click', closeModal);
 closeWithShadow.addEventListener('click', closeModal);
 bodyModal.addEventListener('click', noClickModal);
 formModal.addEventListener('submit', myFunction);
 sendButton.addEventListener('click', closeModal);
+//     blocImg.forEach(function(element) {
+//       element.addEventListener('click', openLightbox);
+//     });
+
+

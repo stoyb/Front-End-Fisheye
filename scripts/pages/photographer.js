@@ -32,6 +32,20 @@ async function getMediaArraysById(id) {
     return getMediaItem
   }
 
+  
+  async function addALike(media){
+      const getLikesItem = [];  
+      media.forEach((item) => {
+          if (item.likes) {
+              getLikesItem.push(item.likes);
+            }
+        });
+        
+        return getLikesItem
+    }
+
+// console.log(await addALike(await getMediaFromArray(await getMediaArraysById(getParamsId()))));
+
   async function addMediaLikes(media){
     let addLikes = 0;  
     media.forEach((item) => {
@@ -99,6 +113,11 @@ async function getPriceFromArray(photographer) {
             if(media.image){
             const mediaModel = mediaFactory(media);
             const userMedia = mediaModel.getMediaImg();
+            let mediaLikes = media.likes;
+            console.log(mediaLikes + 1);
+            userMedia.addEventListener('click', function() {
+                mediaLikes + 1;
+                })
             bloc.appendChild(userMedia);
             }
             if(media.video) {
@@ -106,6 +125,10 @@ async function getPriceFromArray(photographer) {
             const userMedia = mediaModel.getMediaVideo();
             bloc.appendChild(userMedia);
         }
+
+        
+        
+    
     });
     };
 
@@ -113,6 +136,13 @@ async function getPriceFromArray(photographer) {
         const bloc = document.querySelector("#main-photographer");
         const mediaModel = mediaFactory(photographers);
         const userMedia = mediaModel.encartLikes();
+        bloc.appendChild(userMedia);
+    };
+
+    async function displayMediaLightbox(photographers) {
+        const bloc = document.querySelector(".carousel");
+        const mediaModel = mediaFactory(photographers);
+        const userMedia = mediaModel.getMediaLightbox();
         bloc.appendChild(userMedia);
     };
 
@@ -125,13 +155,14 @@ async function getPriceFromArray(photographer) {
        const idPhotographer  = getParamsId(); 
        const photographer = await getPhotographerById(idPhotographer);
        const media = await getMediaArraysById(idPhotographer);
-       const imageFromArray = await getMediaFromArray(media);
+       const mediaFromArray = await getMediaFromArray(media);
        const  mediaLikes = await addMediaLikes(media);
        displayDataPhotographer(photographer);
        displayImgPhotographer(photographer);
        displayNamePhotographer(photographer)
-       displayMediaItem(imageFromArray);
+       displayMediaItem(mediaFromArray);
        displayMediaLikes(mediaLikes);
+       displayMediaLightbox(mediaFromArray);
     };
     
     init();

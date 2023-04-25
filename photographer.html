@@ -19,8 +19,19 @@
       <div class="photograph-header">
         <button aria-label="Contact me" class="contact_button">Contactez-moi</button>
       </div>
-      <div class="lightbox">
+      <div id="lightbox">
+        <div class="modal-lightbox">
+          <header id="header-lightbox">
+            <img class="close-lightbox" src="assets/icons/close-lightbox.svg" alt="Close Contact form" />
+          </header>
+          <div class="lightbox__flex">
+            <span class="arrow-left"><i class="fa-solid fa-less-than"></i></span>
+            <div class="carousel"></div>
+            <span class="arrow-right"><i class="fa-solid fa-greater-than"></i></span>
+          </div>
+        </div>
       </div>
+      
     </main>
     </div>
     <div id="contact_modal">
@@ -46,7 +57,7 @@
 				</form>
 			</div>
 		</div>
-    <script type="module" src="scripts/utils/contactForm.js"></script>
     <script type="module" src="scripts/pages/photographer.js"></script>
+    <script type="module" src="scripts/utils/contactForm.js"></script>
   </body>
 </html>

@@ -9,9 +9,8 @@ export function mediaFactory(data) {
     const blocPhoto = document.createElement('div');
     const blocVideo = document.createElement('div');
     function getMediaImg() {
-        const anchor = document.createElement('a');
-        anchor.setAttribute("aria-label", title + ", closeup view");
-        anchor.setAttribute("href", picture);
+        // const anchor = document.createElement('a');
+        // anchor.setAttribute("aria-label", title + ", closeup view");
         const img = document.createElement('img');
         blocPhoto.classList.add('bloc-image');
         img.setAttribute('src', picture);
@@ -32,8 +31,7 @@ export function mediaFactory(data) {
         imgLikes.appendChild(iconContainer);
         mediaLegend.appendChild(imgTitle);
         mediaLegend.appendChild(imgLikes);
-        anchor.appendChild(img);
-        blocPhoto.appendChild(anchor);
+        blocPhoto.appendChild(img);
         blocPhoto.appendChild(mediaLegend);
         return (blocPhoto)
     }
@@ -84,5 +82,16 @@ export function mediaFactory(data) {
         blocEncart.appendChild(blocLikesPrice);
         return (blocEncart)
     }
-    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo, encartLikes }
+
+    function getMediaLightbox() {
+        const modalLightbox = document.createElement('div');
+        const imgLightbox = document.createElement('img');
+        imgLightbox.setAttribute('src', picture);
+        const titleLightbox = document.createElement('p');
+        titleLightbox.textContent = title;
+        modalLightbox.appendChild(imgLightbox);
+        modalLightbox.appendChild(titleLightbox);
+        return (modalLightbox)
+    }
+    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo, encartLikes, getMediaLightbox }
 }

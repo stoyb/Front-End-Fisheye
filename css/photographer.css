@@ -146,6 +146,7 @@ form textarea {
 .bloc-image  img, .bloc-video  video {
     width: 236px;
     height: 216px;
+    cursor: pointer;
 }
 
 .bloc-image  img {
@@ -176,6 +177,7 @@ form textarea {
 .media-legend__likes {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 
 .media-legend__likes > span {

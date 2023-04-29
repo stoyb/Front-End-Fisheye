@@ -8,60 +8,44 @@ export function mediaFactory(data) {
     const videoPlayer = `assets/images/sample/${photographerId}/${video}`;
     const blocPhoto = document.createElement('div');
     const blocVideo = document.createElement('div');
+
     function getMediaImg() {
-        // const anchor = document.createElement('a');
-        // anchor.setAttribute("aria-label", title + ", closeup view");
         const img = document.createElement('img');
         blocPhoto.classList.add('bloc-image');
         img.setAttribute('src', picture);
-        img.setAttribute('alt', "picture");
-        const mediaLegend = document.createElement('div');
-        mediaLegend.classList.add('media-legend');
-        const imgTitle = document.createElement('p');
-        imgTitle.classList.add('media-legend__title');
-        imgTitle.textContent = title; 
-        const iconHeart = document.createElement('i');
-        iconHeart.classList.add("fa", "fa-heart");
-        iconHeart.setAttribute("aria-label", "likes");
-        const imgLikes = document.createElement('p');
-        imgLikes.classList.add('media-legend__likes');
-        imgLikes.textContent = likes + " ";
-        const iconContainer = document.createElement('span');
-        iconContainer.appendChild(iconHeart);
-        imgLikes.appendChild(iconContainer);
-        mediaLegend.appendChild(imgTitle);
-        mediaLegend.appendChild(imgLikes);
+        img.setAttribute('alt', title + ", closeup view");
+        img.classList.add('bloc-image__img');
         blocPhoto.appendChild(img);
-        blocPhoto.appendChild(mediaLegend);
         return (blocPhoto)
     }
     function getMediaVideo() {
-        const anchor = document.createElement('a');
-        anchor.setAttribute("aria-label", title + ", closeup view");
         const videoItem = document.createElement('video');
         blocVideo.classList.add('bloc-video');
         videoItem.setAttribute('src', videoPlayer);
+        videoItem.setAttribute("aria-label", title + ", closeup view");
         videoItem.setAttribute('controls', '');
-        const mediaLegend = document.createElement('div');
-        mediaLegend.classList.add('media-legend');
-        const videoTitle = document.createElement('p');
-        videoTitle.classList.add('media-legend__title');
-        videoTitle.textContent = title; 
+        videoItem.classList.add('bloc-video__video');
+        blocVideo.appendChild(videoItem);
+        return (blocVideo)
+    }
+    function getMediaTitle() {
+        const mediaLegendTitle = document.createElement('p');
+        mediaLegendTitle.classList.add('media-legend__title');
+        mediaLegendTitle.textContent = title;
+        return (mediaLegendTitle)
+    }
+
+    function getMediaLikes() {
+        const iconContainer = document.createElement('span');
         const iconHeart = document.createElement('i');
         iconHeart.classList.add("fa", "fa-heart");
         iconHeart.setAttribute("aria-label", "likes");
-        const videoLikes = document.createElement('p');
-        videoLikes.classList.add('media-legend__likes');
-        videoLikes.textContent = likes + " ";
-        const iconContainer = document.createElement('span');
-        anchor.appendChild(videoItem);
+        const mediaLegendLikes = document.createElement('p');
+        mediaLegendLikes.classList.add('media-legend__likes');
+        mediaLegendLikes.textContent = likes + " ";
         iconContainer.appendChild(iconHeart);
-        videoLikes.appendChild(iconContainer);
-        mediaLegend.appendChild(videoTitle);
-        mediaLegend.appendChild(videoLikes);
-        blocVideo.appendChild(anchor);
-        blocVideo.appendChild(mediaLegend);
-        return (blocVideo)
+        mediaLegendLikes.appendChild(iconContainer);
+        return (mediaLegendLikes)
     }
 
     function encartLikes() {
@@ -93,5 +77,5 @@ export function mediaFactory(data) {
         modalLightbox.appendChild(titleLightbox);
         return (modalLightbox)
     }
-    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo, encartLikes, getMediaLightbox }
+    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo, getMediaTitle, getMediaLikes, encartLikes, getMediaLightbox }
 }

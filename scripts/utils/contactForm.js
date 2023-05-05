@@ -6,7 +6,7 @@ const formModal = document.getElementById("form-modal");
 const sendButton = document.forms["reserve"]["submit"];
 const lightboxContainer = document.querySelector('#lightbox'); 
 const carrouselModal = document.querySelector('carousel');
-const blocImg = document.getElementsByClassName('bloc-image');
+
 
 
 function displayModal() {
@@ -40,10 +40,9 @@ bodyModal.addEventListener('click', noClickModal);
 formModal.addEventListener('submit', myFunction);
 sendButton.addEventListener('click', closeModal);
 
-console.log([...blocImg]);
-[...blocImg].forEach(function(element) {
-    console.log(element); 
-    element.addEventListener('click', openLightbox);
-    })
+
+
+
+
 
 

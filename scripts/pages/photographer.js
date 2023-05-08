@@ -208,39 +208,38 @@ async function displayImgPhotographer(photographer) {
                     });
                 }
                 
-                
-                
             }
+
+
+            
+
+
+
             const selectTri = document.querySelector('.select');
             selectTri.addEventListener('change', (event) => {
                 const selectedOption = event.target.value;
                 
                 switch (selectedOption) {
                     case 'popular':
+                      bloc.innerHTML = '';
                       listItem.sort((a, b) => b.likes - a.likes);
+                      displayMediaItem(listItem);
+                      console.log('Popularité');
                       
-                      console.log('Vous avez sélectionné l\'option "Popularité".');
                       break;
                       case 'date':
-                          let listItemDate
-                          bloc.remove();
-                          const blocDate = document.createElement('div');
-                          blocDate.classList.add('bloc-date');
-                          listItemDate = listItem.sort((a, b) => new Date(b.date) - new Date(a.date));
-                          displayMediaItem(listItemDate);
-                         
-                          photographersSection.appendChild(blocDate);
-                    
-                      console.log('Vous avez sélectionné l\'option "Date".');
+                      bloc.innerHTML = '';
+                      listItem.sort((a, b) => new Date(b.date) - new Date(a.date));
+                      displayMediaItem(listItem);
+                      console.log('Date');
                       break;
                     case 'title':
-                      if (media.title) {
-                        listItem.sort((a, b) => a.title.localeCompare(b.date));
-                        listItemTitle.push(listItem);
-                        displayMediaItem(listItem);
-                    }
-                      console.log('Vous avez sélectionné l\'option "Titre".');
+                      bloc.innerHTML = '';
+                      listItem.sort((a, b) => a.title.localeCompare(b.title));
+                      displayMediaItem(listItem);
+                      console.log('Titre');
                       break;
+                      
                   }
             });
 

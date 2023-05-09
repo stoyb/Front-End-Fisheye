@@ -1,6 +1,8 @@
 //Mettre le code JavaScript lié à la page photographer.html
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
+
+
 let listItem = []; 
 
 function getParamsId() {
@@ -97,9 +99,6 @@ async function displayImgPhotographer(photographer) {
           bloc.appendChild(userMedia);
         };
 
-
-        
-        
         const photographersSection = document.querySelector("#main-photographer");
         const bloc = document.createElement('div');
         bloc.classList.add("contain-media");
@@ -162,52 +161,65 @@ async function displayImgPhotographer(photographer) {
                         displayMediaLikes(mediaLikesResults);
                     }
                     
-                    
                 });
                 
                 userMedia.addEventListener('click', openLightbox);
+                userMedia.focus();
             }  
             
             );
             
             function openLightbox(event) {
                 const lightboxContainer = document.querySelector('#lightbox'); 
+                const bodyWrapper = document.querySelector('.wrapper');
                 lightboxContainer.style.display = "block";
+                lightboxContainer.setAttribute('aria-hidden', 'false');
+                bodyWrapper.setAttribute('aria-hidden', 'true');
                 const blocMedia = document.createElement('div');
                 blocMedia.classList.add('bloc-media__carousel');
                 let currentIndex = event.currentTarget.parentNode.getAttribute('data-index');
                 let itemMedia 
+                let itemMediaTitle 
+               
                 function slideCarousel(){
                     let blocMediaObject = listItem[currentIndex];
-                    console.log(blocMediaObject);
                     if (blocMediaObject.image) {
                         const mediaModel = mediaFactory(blocMediaObject);
                         itemMedia = mediaModel.getMediaImg();
+                        itemMediaTitle = mediaModel.getMediaTitle();
                         blocMedia.appendChild(itemMedia);
+                        blocMedia.appendChild(itemMediaTitle);
+                        
                     }
                     if (blocMediaObject.video) {
                         const mediaModel = mediaFactory(blocMediaObject);
                         itemMedia = mediaModel.getMediaVideo();
-                        blocMedia.appendChild(itemMedia)
+                        itemMediaTitle = mediaModel.getMediaTitle();
+                        blocMedia.appendChild(itemMedia);
+                        blocMedia.appendChild(itemMediaTitle);
                     } }
-                    slideCarousel();
-                    carousel.appendChild(blocMedia);
+                   
+                    slideCarousel(); 
+                    
+                  
+                   
+                   carousel.appendChild(blocMedia);
                     
                     prevButton.addEventListener('click', () => {
                         blocMedia.removeChild(itemMedia);
+                        blocMedia.removeChild(itemMediaTitle);
                         currentIndex = (currentIndex - 1 + listItem.length) % listItem.length;
                         slideCarousel();
                         carousel.appendChild(blocMedia);  
                     });
-                    
                     nextButton.addEventListener('click', () => {
                         blocMedia.removeChild(itemMedia);
+                        blocMedia.removeChild(itemMediaTitle);
                         currentIndex = (currentIndex + 1 + listItem.length) % listItem.length;
                         slideCarousel();
                         carousel.appendChild(blocMedia);   
                     });
-                }
-                
+                } 
             }
 
 

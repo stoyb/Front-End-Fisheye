@@ -192,7 +192,6 @@ async function displayImgPhotographer(photographer) {
                         itemMediaTitle = mediaModel.getMediaTitle();
                         blocMedia.appendChild(itemMedia);
                         blocMedia.appendChild(itemMediaTitle);
-                        
                     }
                     if (blocMediaObject.video) {
                         const mediaModel = mediaFactory(blocMediaObject);
@@ -213,17 +212,23 @@ async function displayImgPhotographer(photographer) {
                         //document.querySelector('.bloc-media__carousel').remove() ;
                         blocMedia.removeChild(itemMedia);
                         blocMedia.removeChild(itemMediaTitle);
-                        currentIndex = (currentIndex - 1 + listItem.length) % listItem.length;
+                        currentIndex = currentIndex - 1;
+                        console.log(currentIndex);
+                        if (currentIndex < 0) {
+                            currentIndex = listItem.length - 1;
+                        } 
                         slideCarousel();
                         //carousel.appendChild(blocMedia);  
                     });
                     nextButton.addEventListener('click', () => {
-                        //document.querySelector('.bloc-media__carousel').remove() ;
                         blocMedia.removeChild(itemMedia);
                         blocMedia.removeChild(itemMediaTitle);
-                        currentIndex = (currentIndex + 1 + listItem.length) % listItem.length;
+                        currentIndex = parseInt(currentIndex) + 1;
+                        if (currentIndex >= listItem.length) {
+                            currentIndex = 0; 
+                        } 
+                        console.log(currentIndex);
                         slideCarousel();
-                        //carousel.appendChild(blocMedia);   
                     });
                 } 
             }
@@ -257,6 +262,7 @@ async function displayImgPhotographer(photographer) {
                       displayMediaItem(listItem);
                       
                       break;
+                    
                       
                   }
             });
@@ -267,11 +273,12 @@ async function displayImgPhotographer(photographer) {
        const idPhotographer  = getParamsId(); 
        const photographer = await getPhotographerById(idPhotographer);
        const media = listItem;
+       const mediaPopular = listItem.sort((a, b) => b.likes - a.likes);
        const mediaLikes = await addMediaLikes(media);
        displayDataPhotographer(photographer);
        displayImgPhotographer(photographer);
        displayNamePhotographer(photographer);
-       displayMediaItem(media);
+       displayMediaItem(mediaPopular);
        displayMediaLikes(mediaLikes);
     };
     

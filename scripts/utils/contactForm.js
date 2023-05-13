@@ -4,7 +4,6 @@ const modalContainer = document.getElementById("contact_modal");
 const bodyModal = document.querySelector(".modal");
 const formModal = document.getElementById("form-modal");
 const sendButton = document.forms["reserve"]["submit"];
-const carrouselModal = document.querySelector('carousel');
 const bodyWrapper = document.querySelector('.wrapper');
 
 

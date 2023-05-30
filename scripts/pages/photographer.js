@@ -227,7 +227,6 @@ async function displayImgPhotographer(photographer) {
                         if (currentIndex >= listItem.length) {
                             currentIndex = 0; 
                         } 
-                        console.log(currentIndex);
                         slideCarousel();
                     });
                 } 

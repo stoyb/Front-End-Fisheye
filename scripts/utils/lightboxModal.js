@@ -1,6 +1,6 @@
 const closeModalButton = document.querySelector('.close-lightbox');
 const lightboxContainer = document.querySelector('#lightbox'); 
-const bodyLightbox = document.querySelector('.modal-lightbox')
+const bodyLightbox = document.querySelector('.lightbox__modal')
 const bodyWrapper = document.querySelector('.wrapper');
 
 function closeModal() {

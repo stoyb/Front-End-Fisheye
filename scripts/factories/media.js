@@ -1,5 +1,5 @@
-import { mediaLikesResults }  from "../pages/photographer.js"
-import { priceArray } from "../pages/photographer.js"
+import { pricePhotographer }  from "../pages/photographer.js"
+import { mediaLikesResults } from "../pages/photographer.js"
 
 export function mediaFactory(data) {
     const { id, photographerId, title, image, video, likes, date, price } = data;
@@ -10,12 +10,22 @@ export function mediaFactory(data) {
     const blocVideo = document.createElement('div');
 
     function getMediaImg() {
-        const img = document.createElement('img');
+        const photoItem = document.createElement('img');
         blocPhoto.classList.add('bloc-image');
-        img.setAttribute('src', picture);
-        img.setAttribute('alt', title + ", closeup view");
-        img.classList.add('bloc-image__img');
-        blocPhoto.appendChild(img);
+        photoItem.setAttribute('src', picture);
+        photoItem.setAttribute('alt', title + ", closeup view");
+        photoItem.classList.add('bloc-image__img');
+        blocPhoto.appendChild(photoItem);
+        return (blocPhoto)
+    }
+
+    function getMediaImgLightbox() {
+        const photoItem = document.createElement('img');
+        blocPhoto.classList.add('bloc-image');
+        photoItem.setAttribute('src', picture);
+        photoItem.setAttribute('alt', title);
+        photoItem.classList.add('bloc-image__img');
+        blocPhoto.appendChild(photoItem);
         return (blocPhoto)
     }
     function getMediaVideo() {
@@ -23,6 +33,16 @@ export function mediaFactory(data) {
         blocVideo.classList.add('bloc-video');
         videoItem.setAttribute('src', videoPlayer);
         videoItem.setAttribute("aria-label", title + ", closeup view");
+        videoItem.setAttribute('controls', '');
+        videoItem.classList.add('bloc-video__video');
+        blocVideo.appendChild(videoItem);
+        return (blocVideo)
+    }
+    function getMediaVideoLightbox() {
+        const videoItem = document.createElement('video');
+        blocVideo.classList.add('bloc-video');
+        videoItem.setAttribute('src', videoPlayer);
+        videoItem.setAttribute("aria-label", title);
         videoItem.setAttribute('controls', '');
         videoItem.classList.add('bloc-video__video');
         blocVideo.appendChild(videoItem);
@@ -37,7 +57,7 @@ export function mediaFactory(data) {
 
     function getMediaLikes() {
         const iconContainer = document.createElement('span');
-        const iconHeart = document.createElement('i');
+        const iconHeart = document.createElement('em');
         iconHeart.classList.add("fa", "fa-heart");
         iconHeart.setAttribute("aria-label", "likes");
         const mediaLegendLikes = document.createElement('p');
@@ -53,12 +73,12 @@ export function mediaFactory(data) {
         blocEncart.classList.add('bloc-encart');
         const blocLikes = document.createElement('div');
         blocLikes.classList.add('bloc-likes');
-        const iconHeart = document.createElement('i');
+        const iconHeart = document.createElement('em');
         iconHeart.classList.add("fa", "fa-heart");
         iconHeart.setAttribute("aria-label", "likes");
         blocLikes.textContent = mediaLikesResults + " ";
         const blocLikesPrice = document.createElement('p');
-        blocLikesPrice.textContent = priceArray + "€/jour";
+        blocLikesPrice.textContent = pricePhotographer + "€/jour";
         const iconContainer = document.createElement('span');
         iconContainer.appendChild(iconHeart);
         blocLikes.appendChild(iconContainer);
@@ -77,5 +97,5 @@ export function mediaFactory(data) {
         modalLightbox.appendChild(titleLightbox);
         return (modalLightbox)
     }
-    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaVideo, getMediaTitle, getMediaLikes, encartLikes, getMediaLightbox }
+    return { id, photographerId, title, image, video, likes, date, price, getMediaImg, getMediaImgLightbox, getMediaVideo, getMediaVideoLightbox, getMediaTitle, getMediaLikes, encartLikes, getMediaLightbox }
 }

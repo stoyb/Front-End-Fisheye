@@ -7,22 +7,21 @@ async function getPhotographers() {
         return dataAPI
     }
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
+    photographers.forEach((photographer) => {
+        const photographerModel = photographerFactory(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+}
 
-
-    async function init() {   
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
+async function init() {   
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+}
     
-    init();
+init();
 
     

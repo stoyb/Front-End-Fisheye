@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -12,17 +12,16 @@
     <div aria-hidden="false" class="wrapper">
       <header>
         <a href="../index.html">
-          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page">
          </a>
       </header>
-    
       <main id="main-photographer">
         <div class="photograph-header">
           <button aria-label="Contact me" class="contact_button">Contactez-moi</button>
         </div>
-        <div class="tri-system">
-          <p>Trier par</p>
-          <select class="select">
+        <div class="sort-system">
+          <label id="orderBy" for="sort-list">Trier par</label>
+          <select  class="select" aria-labelledby="orderBy" id="sort-list">
             <option  value="popular">Popularité</option>
             <option  value="date">Date</option>
             <option  value="title">Titre</option>
@@ -30,41 +29,41 @@
         </div>
       </main>
     </div>
-    <div id="lightbox" aria-hidden="true" role="dialog" aria-describedby="modalMedia">
-      <div class="modal-lightbox">
-        <header id="header-lightbox">
-          <img class="close-lightbox" src="assets/icons/close-lightbox.svg" alt="Close Contact form" />
-        </header>
-        <div class="lightbox__flex">
-          <span class="arrow-left"><i class="fa-solid fa-less-than"></i></span>
-          <div class="carousel"></div>
-          <span class="arrow-right"><i class="fa-solid fa-greater-than"></i></span>
-        </div>
-      </div>
-    </div>
-    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="formContact">
-			<div class="modal">
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="contactModal" aria-labelledby="contactModal">
+			<div class="contact_modal__modal">
 				<header id="header-modal">
           <div id="header-modal__title">
-            <h2>Contactez-moi</h2>
+            <h2 id="contactModal">Contactez-moi</h2>
           </div>
-          <img src="assets/icons/close.svg" class="close-modal" alt="Close Contact form" />
+          <img src="assets/icons/close.svg" class="close-modal" alt="Close Contact form">
         </header>
 				<form id="form-modal" name="reserve">
 					<div>
-						  <label>Prénom</label>
-              <input name="firstName" />
-              <label>Nom</label>
-              <input name="lastName" />
-              <label>Email</label>
-              <input name="email" />
-              <label>Votre message</label>
-              <textarea name="message"></textarea>
+						  <label id="firstName" for="firstNameLabel">Prénom</label>
+              <input type="text" name="firstName" aria-labelledby="firstName" id="firstNameLabel">
+              <label id="lastName" for="lastNameLabel">Nom</label>
+              <input type="text" name="lastName" aria-labelledby="lastName" id="lastNameLabel">
+              <label id="email" for="emailLabel">Email</label>
+              <input type="text" name="email" aria-labelledby="email" id="emailLabel">
+              <label id="yourMessage" for="messageLabel">Votre message</label>
+              <textarea name="message" aria-labelledby="yourMessage" id="messageLabel"></textarea>
 					</div>
           <button type="submit" name="submit" value="Submit" class="contact_button" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <div id="lightbox" aria-hidden="true" role="dialog" aria-label="media closeup view">
+      <div class="lightbox__modal">
+        <header>
+          <img class="close-lightbox" src="assets/icons/close-lightbox.svg" alt="Close dialog">
+        </header>
+        <div class="lightbox__flex">
+          <span class="arrow-left"><em class="fa-solid fa-less-than"></em></span>
+          <div class="carousel"></div>
+          <span class="arrow-right"><em class="fa-solid fa-greater-than"></em></span>
+        </div>
+      </div>
+    </div>
     <script type="module" src="scripts/pages/photographer.js"></script>
     <script type="module" src="scripts/utils/contactForm.js"></script>
     <script type="module" src="scripts/utils/lightboxModal.js"></script>

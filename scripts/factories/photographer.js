@@ -11,7 +11,7 @@ export function photographerFactory(data) {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute('alt', name);
+        img.setAttribute("alt", " ");
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const place = document.createElement('p');
@@ -31,7 +31,7 @@ export function photographerFactory(data) {
         anchor.appendChild(article);
         return (anchor);
     }
-    function getIdentityData() {
+    function getIdentity() {
         const blocIdentity = document.createElement('div');
         blocIdentity.classList.add('bloc-identity');
         const namePhotographer = document.createElement('h1');
@@ -56,13 +56,13 @@ export function photographerFactory(data) {
         blocImg.appendChild(img);
         return(blocImg)
      }
-     function getNameForForm() {
+     function getFormName() {
          const formName = document.createElement('p');
          formName.classList.add('form-name');
          formName.textContent = name;
          return(formName)
      }
 
-    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM, getIdentityData, getImg, getNameForForm}
+    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM, getIdentity, getImg, getFormName}
 }
 

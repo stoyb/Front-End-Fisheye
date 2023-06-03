@@ -1,13 +1,3 @@
-#contact_modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -17,6 +7,20 @@
     justify-content: space-evenly;
     align-items: center;
     width: 84%;
+}
+
+.contact_button {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    padding: 8px 2px;
+    width: 120px;
+    height: 50px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    order: 2;
 }
 
 .bloc-identity > h1 {
@@ -50,21 +54,79 @@
     
 }
 
-.contact_button {
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    padding: 8px 2px;
-    width: 120px;
-    height: 50px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-    order: 2;
+.sort-system {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    margin: 20px 100px;
+    
 }
 
-.modal {
+.sort-system > label, select {
+    font-size: 16px;
+    font-weight: 700;
+    
+}
+
+#lightbox {
+    background-color:white;
+    width: 100%;
+    height:100%;
+    position: fixed;
+    z-index: 999;
+    top:0;
+    display: none;
+}
+
+.lightbox__modal {
+    display: block;
+    margin: 5% auto;
+    background-color: transparent;
+    width: 80%;
+    height: 80%;
+    position: relative;
+    bottom: 30px;
+}
+
+.lightbox__modal header {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    height: 90px;
+    padding: 0 40px;
+}
+
+.lightbox__flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-left, .arrow-right {
+    color: #901C1C;
+    font-size: 42px;
+    padding: 36px;
+    margin-top: 60px;
+}
+
+.carousel{
+    width: 100%;
+    height:400px;
+}
+
+#contact_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.contact_modal__modal {
     border-radius: 5px;
     background-color: #DB8876;
     width: 46%;
@@ -76,34 +138,28 @@
     margin: 30px auto;
 }
 
-.modal header {
+.contact_modal__modal header {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 16px;
 }
+#header-modal__title {
+    display: flex;
+    flex-direction: column;
+    margin: -20px 0;
+}
 
-.modal header img {
+.contact_modal__modal header img {
     cursor: pointer;
     height: 36px;
     margin-top: -10px;
 }
 
-.modal header h2, .form-name {
+.contact_modal__modal header h2, .form-name {
     font-size: 48px;
     font-weight: normal;
     margin: 0;
-}
-
-.modal header h2 {
-    text-align: center;
-
-}
-
-#header-modal__title {
-    display: flex;
-    flex-direction: column;
-    margin: -20px 0;
 }
 
 form {
@@ -141,7 +197,6 @@ form textarea {
     resize: none;
     height: 140px;
 }
-
 
 .bloc-image  img, .bloc-video  video {
     width: 236px;
@@ -204,32 +259,6 @@ form textarea {
 
 }
 
-#lightbox {
-    background-color:white;
-    width: 100%;
-    height:100%;
-    position: fixed;
-    z-index: 999;
-    top:0;
-    display: none;
-}
-
-.modal-lightbox {
-    display: block;
-    margin: 5% auto;
-    background-color: transparent;
-    width: 80%;
-    height: 80%;
-    position: relative;
-    bottom: 30px;
-}
-
-.carousel{
-    width: 100%;
-    height:400px;
-    
-}
-
 .bloc-media__carousel .media-legend__title, .bloc-media__carousel img, .bloc-media__carousel video {
     position: relative;
     bottom:70px;
@@ -239,44 +268,11 @@ form textarea {
     height: 600px;
 }
 
-.lightbox__flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.arrow-left, .arrow-right {
-    color: #901C1C;
-    font-size: 42px;
-    padding: 36px;
-    margin-top: 60px;
-}
-
-#header-lightbox {
-    display: flex;
-    justify-content: end;
-    padding: 0 30px;
-}
-
 .media-legend-lightbox {
     position: relative;
     bottom: 70px;
 }
 
-.tri-system {
-    display: flex;
-    flex-direction: row;
-    column-gap: 30px;
-    margin: 20px 100px;
-    
-}
-
-.tri-system > p, select {
-    font-size: 16px;
-    font-weight: 700;
-    
-}
 select {
     background-color: #901C1C;
     color: #FFF;

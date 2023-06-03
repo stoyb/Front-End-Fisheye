@@ -113,6 +113,7 @@ async function displayImgPhotographer(photographer) {
 // Function that gathers all likes 
 export let pricePhotographer = await getPriceFromArray(await getPhotographerById(getParamsId()));
 export let mediaLikesResults = await addMediaLikes(await getMediaArraysById(getParamsId()));
+console.log(mediaLikesResults);
 async function displayMediaLikes(photographers) {
     const bloc = document.querySelector("#main-photographer");
     const mediaModel = mediaFactory(photographers);
@@ -166,7 +167,6 @@ async function displayMediaItem(photographers) {
             if (!everClicked) {
                 everClicked = true
                 let mediaLikesPlus = mediaLikesNumber + 1;
-                let mediaLikesResults = mediaLikesResults;
                 mediaLikesResults = mediaLikesResults + 1;
                 const iconContainer = document.createElement('span');
                 const iconHeart = document.createElement('i');

@@ -134,9 +134,11 @@ async function displayMediaItem(photographers) {
         let userMediaLikesLegend
         let mediaLikesNumber = media.likes;
         let everClicked = false;
-        const blocMedia = document.createElement('div');
+        const blocMedia = document.createElement('a');
         blocMedia.classList.add('bloc-media');
+        blocMedia.setAttribute("href", " ");
         blocMedia.setAttribute('data-index', index);
+        blocMedia.focus();
         if (media.image) {
             const mediaLegend = document.createElement('div');
             mediaLegend.classList.add('media-legend');
@@ -179,7 +181,12 @@ async function displayMediaItem(photographers) {
             }
         });
         userMedia.addEventListener('click', openLightbox);
-        userMedia.focus();
+        userMedia.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.keyCode === 13) {
+              event.preventDefault();
+              openLightbox();
+            }
+          });
     });
     function openLightbox(event) {
         const lightboxContainer = document.querySelector('#lightbox'); 

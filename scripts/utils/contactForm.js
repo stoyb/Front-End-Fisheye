@@ -1,5 +1,6 @@
-const buttonOpen = document.querySelector('.contact_button');
-const buttonClose = document.querySelector('.close-modal');
+const openButton = document.querySelector('.contact_button');
+const closeButtonIcon = document.querySelector('.close-modal');
+const closeButton = document.querySelector(".close-modal-button");
 const modalContainer = document.getElementById("contact_modal");
 const bodyModal = document.querySelector(".contact_modal__modal");
 const formModal = document.getElementById("form-modal");
@@ -11,21 +12,46 @@ function displayModal() {
   modalContainer.style.display = "block";
   modalContainer.setAttribute('aria-hidden', 'false');
   bodyWrapper.setAttribute('aria-hidden', 'true');
-  buttonOpen.focus();
+  closeButton.focus();
+}
+
+// Navigates inside the modal with Tab 
+function navigateModal(event) {
+  if (event.key === 'Tab' || event.keyCode === 9) {
+    if (event.shiftKey) {
+      if (document.activeElement === closeButton) {
+        event.preventDefault();
+        sendButton.focus();
+      }
+    } else {
+      if (document.activeElement === sendButton) {
+        event.preventDefault();
+        closeButton.focus();
+      }
+    }
+  }
+}
+
+// Closes the modal with Escape
+function closeModalEscape(event) {
+  if (event.key === 'Escape' || event.keyCode === 27) {
+    modal.style.display = 'none';
+    sendButton.focus();
+  }
 }
 
 function closeModal() {
   modalContainer.style.display = "none";
   modalContainer.setAttribute('aria-hidden', 'true');
   bodyWrapper.setAttribute('aria-hidden', 'false');
-  buttonClose.focus();
+  openButton.focus();
 }
 
 function noClickModal(e) {
     e.stopPropagation()
 }
 // Logs the contact form's container inside the console
-function myFunction(e) {
+function logResults(e) {
   e.preventDefault(); 
   const formData = new FormData(e.target); 
   console.log(Object.fromEntries(formData)); 
@@ -38,12 +64,15 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-buttonOpen.addEventListener('click', displayModal);
-buttonClose.addEventListener('click', closeModal);
+openButton.addEventListener('click', displayModal);
+closeButton.addEventListener('click', closeModal);
 modalContainer.addEventListener('click', closeModal);
 bodyModal.addEventListener('click', noClickModal);
-formModal.addEventListener('submit', myFunction);
+formModal.addEventListener('submit', logResults);
 sendButton.addEventListener('click', closeModal);
+bodyModal.addEventListener('keydown', navigateModal);
+closeButton.addEventListener('click', closeModalEscape);
+bodyModal.addEventListener('keydown', closeModalEscape);
 
 
 

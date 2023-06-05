@@ -198,6 +198,16 @@ form textarea {
     height: 140px;
 }
 
+.close-modal-button {
+    z-index: 1;
+    border: none;
+    background-color: transparent;
+}
+
+.close-modal {
+    z-index: 2;
+}
+
 .bloc-image  img, .bloc-video  video {
     width: 236px;
     height: 216px;

@@ -125,7 +125,6 @@ async function displayMediaLikes(photographers) {
 const photographersSection = document.querySelector("#main-photographer");
 const bloc = document.createElement('div');
 bloc.classList.add("contain-media");
-
 async function displayMediaItem(photographers) {
     photographersSection.appendChild(bloc);
     photographers.forEach((media, index) => {
@@ -134,9 +133,9 @@ async function displayMediaItem(photographers) {
         let userMediaLikesLegend
         let mediaLikesNumber = media.likes;
         let everClicked = false;
-        const blocMedia = document.createElement('a');
+        // To be continued...
+        const blocMedia = document.createElement('div');
         blocMedia.classList.add('bloc-media');
-        blocMedia.setAttribute("href", " ");
         blocMedia.setAttribute('data-index', index);
         blocMedia.focus();
         if (media.image) {

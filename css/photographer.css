@@ -198,7 +198,7 @@ form textarea {
     height: 140px;
 }
 
-.close-modal-button {
+.close-modal-button, .bloc-media {
     z-index: 1;
     border: none;
     background-color: transparent;

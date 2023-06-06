@@ -127,66 +127,6 @@ const bloc = document.createElement('div');
 bloc.classList.add("contain-media");
 async function displayMediaItem(photographers) {
     photographersSection.appendChild(bloc);
-    photographers.forEach((media, index) => {
-        let userMedia;
-        let userMediaTitleLegend;
-        let userMediaLikesLegend
-        let mediaLikesNumber = media.likes;
-        let everClicked = false;
-        // To be continued...
-        const blocMedia = document.createElement('div');
-        blocMedia.classList.add('bloc-media');
-        blocMedia.setAttribute('data-index', index);
-        blocMedia.focus();
-        if (media.image) {
-            const mediaLegend = document.createElement('div');
-            mediaLegend.classList.add('media-legend');
-            const mediaModel = mediaFactory(media);
-            userMedia = mediaModel.getMediaImg();
-            userMediaTitleLegend = mediaModel.getMediaTitle();
-            userMediaLikesLegend = mediaModel.getMediaLikes();
-            mediaLegend.appendChild(userMediaTitleLegend);
-            mediaLegend.appendChild(userMediaLikesLegend);
-            blocMedia.appendChild(userMedia);
-            blocMedia.appendChild(mediaLegend);
-            bloc.appendChild(blocMedia);
-        }
-        if (media.video) {
-            const mediaLegend = document.createElement('div');
-            mediaLegend.classList.add('media-legend');
-            const mediaModel = mediaFactory(media);
-            userMedia = mediaModel.getMediaVideo();
-            userMediaTitleLegend = mediaModel.getMediaTitle();
-            userMediaLikesLegend = mediaModel.getMediaLikes();
-            mediaLegend.appendChild(userMediaTitleLegend);
-            mediaLegend.appendChild(userMediaLikesLegend);
-            blocMedia.appendChild(userMedia);
-            blocMedia.appendChild(mediaLegend);
-            bloc.appendChild(blocMedia);
-        }
-        userMediaLikesLegend.addEventListener('click', function() {
-            if (!everClicked) {
-                everClicked = true
-                let mediaLikesPlus = mediaLikesNumber + 1;
-                mediaLikesResults = mediaLikesResults + 1;
-                const iconContainer = document.createElement('span');
-                const iconHeart = document.createElement('i');
-                iconHeart.classList.add("fa", "fa-heart");
-                iconHeart.setAttribute("aria-label", "likes");
-                userMediaLikesLegend.textContent = mediaLikesPlus + " ";
-                iconContainer.appendChild(iconHeart);
-                userMediaLikesLegend.appendChild(iconContainer);
-                displayMediaLikes(mediaLikesResults);
-            }
-        });
-        userMedia.addEventListener('click', openLightbox);
-        userMedia.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' || event.keyCode === 13) {
-              event.preventDefault();
-              openLightbox();
-            }
-          });
-    });
     function openLightbox(event) {
         const lightboxContainer = document.querySelector('#lightbox'); 
         const bodyWrapper = document.querySelector('.wrapper');
@@ -196,6 +136,7 @@ async function displayMediaItem(photographers) {
         lightboxContainer.style.display = "block";
         lightboxContainer.setAttribute('aria-hidden', 'false');
         bodyWrapper.setAttribute('aria-hidden', 'true');
+        prevButton.focus();
         if(document.querySelector('.bloc-media__carousel')) {
             document.querySelector('.bloc-media__carousel').remove() ;
         }
@@ -245,6 +186,66 @@ async function displayMediaItem(photographers) {
             slideCarousel();
         });
     } 
+    photographers.forEach((media, index) => {
+        let userMedia;
+        let userMediaTitleLegend;
+        let userMediaLikesLegend
+        let mediaLikesNumber = media.likes;
+        let everClicked = false;
+        const blocMedia = document.createElement('div');
+        blocMedia.classList.add('bloc-media');
+        blocMedia.setAttribute('data-index', index);
+        if (media.image) {
+            const mediaLegend = document.createElement('div');
+            mediaLegend.classList.add('media-legend');
+            const mediaModel = mediaFactory(media);
+            userMedia = mediaModel.getMediaImg();
+            userMediaTitleLegend = mediaModel.getMediaTitle();
+            userMediaLikesLegend = mediaModel.getMediaLikes();
+            mediaLegend.appendChild(userMediaTitleLegend);
+            mediaLegend.appendChild(userMediaLikesLegend);
+            blocMedia.appendChild(userMedia);
+            blocMedia.appendChild(mediaLegend);
+            bloc.appendChild(blocMedia);
+        }
+        if (media.video) {
+            const mediaLegend = document.createElement('div');
+            mediaLegend.classList.add('media-legend');
+            const mediaModel = mediaFactory(media);
+            userMedia = mediaModel.getMediaVideo();
+            userMediaTitleLegend = mediaModel.getMediaTitle();
+            userMediaLikesLegend = mediaModel.getMediaLikes();
+            mediaLegend.appendChild(userMediaTitleLegend);
+            mediaLegend.appendChild(userMediaLikesLegend);
+            blocMedia.appendChild(userMedia);
+            blocMedia.appendChild(mediaLegend);
+            bloc.appendChild(blocMedia);
+        }
+        userMediaLikesLegend.addEventListener('click', function() {
+            if (!everClicked) {
+                everClicked = true
+                let mediaLikesPlus = mediaLikesNumber + 1;
+                mediaLikesResults = mediaLikesResults + 1;
+                const iconContainer = document.createElement('span');
+                const iconHeart = document.createElement('i');
+                iconHeart.classList.add("fa", "fa-heart");
+                iconHeart.setAttribute("aria-label", "likes");
+                userMediaLikesLegend.textContent = mediaLikesPlus + " ";
+                iconContainer.appendChild(iconHeart);
+                userMediaLikesLegend.appendChild(iconContainer);
+                displayMediaLikes(mediaLikesResults);
+            }
+        });
+        userMedia.addEventListener('click', openLightbox);
+        userMedia.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+              openLightbox(event);
+            }
+          });
+          
+
+    });
+    
 }
 
 async function init() {  

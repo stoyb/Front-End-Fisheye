@@ -6,14 +6,16 @@ export function mediaFactory(data) {
     
     const picture = `assets/images/sample/${photographerId}/${image}`;
     const videoPlayer = `assets/images/sample/${photographerId}/${video}`;
-    const blocPhoto = document.createElement('div');
-    const blocVideo = document.createElement('div');
+    const blocPhoto = document.createElement('button');
+    const blocPhotoLightbox = document.createElement('div');
+    const blocVideo = document.createElement('button');
+    const blocVideoLightbox = document.createElement('div');
 
     function getMediaImg() {
         const photoItem = document.createElement('img');
         blocPhoto.classList.add('bloc-image');
         photoItem.setAttribute('src', picture);
-        photoItem.setAttribute('alt', title + ", closeup view");
+        photoItem.setAttribute('aria-label', title + ", closeup view");
         photoItem.classList.add('bloc-image__img');
         blocPhoto.appendChild(photoItem);
         return (blocPhoto)
@@ -21,12 +23,12 @@ export function mediaFactory(data) {
 
     function getMediaImgLightbox() {
         const photoItem = document.createElement('img');
-        blocPhoto.classList.add('bloc-image');
+        blocPhotoLightbox.classList.add('bloc-image');
         photoItem.setAttribute('src', picture);
         photoItem.setAttribute('alt', title);
         photoItem.classList.add('bloc-image__img');
-        blocPhoto.appendChild(photoItem);
-        return (blocPhoto)
+        blocPhotoLightbox.appendChild(photoItem);
+        return (blocPhotoLightbox)
     }
     function getMediaVideo() {
         const videoItem = document.createElement('video');
@@ -40,13 +42,13 @@ export function mediaFactory(data) {
     }
     function getMediaVideoLightbox() {
         const videoItem = document.createElement('video');
-        blocVideo.classList.add('bloc-video');
+        blocVideoLightbox.classList.add('bloc-video');
         videoItem.setAttribute('src', videoPlayer);
         videoItem.setAttribute("aria-label", title);
         videoItem.setAttribute('controls', '');
         videoItem.classList.add('bloc-video__video');
-        blocVideo.appendChild(videoItem);
-        return (blocVideo)
+        blocVideoLightbox.appendChild(videoItem);
+        return (blocVideoLightbox)
     }
     function getMediaTitle() {
         const mediaLegendTitle = document.createElement('p');

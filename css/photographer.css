@@ -109,6 +109,8 @@
     font-size: 42px;
     padding: 36px;
     margin-top: 60px;
+    border:none;
+    background-color: transparent;
 }
 
 .carousel{
@@ -119,6 +121,7 @@
 #contact_modal {
     display: none;
     position: fixed;
+    z-index: 999;
     top: 0;
     left:0;
     width: 100%;
@@ -219,6 +222,11 @@ form textarea {
    
 }
 
+.bloc-image, .bloc-video {
+    border: none;
+    background-color: transparent;
+}
+
 .contain-media {
     display: grid;
     grid-template-columns: 236px 236px 236px;
@@ -290,6 +298,12 @@ select {
     border-radius: 5px;
     padding: 12px;
     letter-spacing: 0.5px;
+}
+
+.close-lightbox-button {
+
+    background-color: transparent;
+    border: none;
 }
 
 

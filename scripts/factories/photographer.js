@@ -50,7 +50,7 @@ export function photographerFactory(data) {
      function getImg() {
         const blocImg = document.createElement('div');
         blocImg.classList.add('bloc-img');
-        const img = document.createElement( 'img' );
+        const img = document.createElement('img');
         img.setAttribute("src", picture);
         img.setAttribute('alt', name);
         blocImg.appendChild(img);

@@ -1,5 +1,4 @@
 const openButton = document.querySelector('.contact_button');
-const closeButtonIcon = document.querySelector('.close-modal');
 const closeButton = document.querySelector(".close-modal-button");
 const modalContainer = document.getElementById("contact_modal");
 const bodyModal = document.querySelector(".contact_modal__modal");
@@ -56,8 +55,6 @@ bodyModal.addEventListener('click', noClickModal);
 formModal.addEventListener('submit', logResults);
 sendButton.addEventListener('click', closeModal);
 bodyModal.addEventListener('keydown', navigateModal);
-closeButton.addEventListener('click', closeModalEscape);
-bodyModal.addEventListener('keydown', closeModalEscape);
 
 
 

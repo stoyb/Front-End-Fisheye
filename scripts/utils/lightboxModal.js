@@ -1,9 +1,7 @@
-const closeModal = document.querySelector('.close-lightbox');
 const closeLightboxButton = document.querySelector('.close-lightbox-button');
 const lightboxContainer = document.querySelector('#lightbox'); 
 const bodyLightbox = document.querySelector('.lightbox__modal')
 const bodyWrapper = document.querySelector('.wrapper');
-const prevButton = document.querySelector('.arrow-left');
 const nextButton = document.querySelector('.arrow-right');
 const logo = document.querySelector('.logo-fisheye');
 
@@ -24,13 +22,6 @@ function navigateModal(event) {
   }
 }
   
-// Closes the modal with Escape
-function closeModalEscape(event) {
-  if (event.key === 'Escape' || event.keyCode === 27) {
-    modal.style.display = 'none';
-    sendButton.focus();
-  }
-}
 function closeModalLightbox() {
     lightboxContainer.style.display = "none";
     lightboxContainer.setAttribute('aria-hidden', 'true');

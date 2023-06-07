@@ -16,17 +16,17 @@
          </a>
       </header>
       <main id="main-photographer">
-        <section class="photograph-header">
+        <div class="photograph-header">
           <button aria-label="Contact me" class="contact_button">Contactez-moi</button>
-        </section>
-        <section class="sort-system">
+        </div>
+        <div class="sort-system">
           <label id="orderBy" for="sort-list">Trier par</label>
           <select  class="select" aria-labelledby="orderBy" id="sort-list">
             <option  value="popular">Popularité</option>
             <option  value="date">Date</option>
             <option  value="title">Titre</option>
           </select>
-        </section>
+        </div>
       </main>
     </div>
     <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="contactModal" aria-labelledby="contactModal">
@@ -61,11 +61,11 @@
             <img class="close-lightbox" src="assets/icons/close-lightbox.svg" alt="Close dialog">
           </button>
         </header>
-        <main class="lightbox__flex">
+        <div class="lightbox__flex">
           <button class="arrow-left"><em class="fa-solid fa-less-than"></em></button>
           <div class="carousel"></div>
           <button class="arrow-right"><em class="fa-solid fa-greater-than"></em></button>
-        </main>
+        </div>
       </div>
     </div>
     <script type="module" src="scripts/pages/photographer.js"></script>

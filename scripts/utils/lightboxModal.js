@@ -42,11 +42,6 @@ function noClickModal(e) {
     e.stopPropagation()
 }
 
-window.addEventListener("keydown", function (event) {
-  if (lightboxContainer.setAttribute('aria-hidden', 'false') && event.key === 27 ) {
-    closeModalLightbox();
-  }
-});
 
 lightboxContainer.addEventListener('keydown', navigateModal);
 lightboxContainer.addEventListener('click', closeModalLightbox);

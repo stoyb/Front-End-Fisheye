@@ -32,14 +32,6 @@ function navigateModal(event) {
   }
 }
 
-// Closes the modal with Escape
-function closeModalEscape(event) {
-  if (event.key === 'Escape' || event.keyCode === 27) {
-    modal.style.display = 'none';
-    sendButton.focus();
-  }
-}
-
 function closeModal() {
   modalContainer.style.display = "none";
   modalContainer.setAttribute('aria-hidden', 'true');
@@ -56,13 +48,6 @@ function logResults(e) {
   const formData = new FormData(e.target); 
   console.log(Object.fromEntries(formData)); 
 }
-
-// Close modal when escape key is pressed
-window.addEventListener("keydown", function (event) {
-  if (modalContainer.setAttribute('aria-hidden', 'false') && event.key === 27 ) {
-    closeModal();
-  }
-});
 
 openButton.addEventListener('click', displayModal);
 closeButton.addEventListener('click', closeModal);

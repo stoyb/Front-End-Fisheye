@@ -1,3 +1,5 @@
+/* Displays and manages elements in index.html */
+
 import { photographerFactory } from "../factories/photographer.js";
 
     
@@ -6,7 +8,7 @@ async function getPhotographers() {
         const dataAPI =  await response.json();
         return dataAPI
     }
-
+// Displays photographers cards in index.html
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 

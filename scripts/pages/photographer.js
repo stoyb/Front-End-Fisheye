@@ -1,30 +1,32 @@
-//Mettre le code JavaScript lié à la page photographer.html
+/* Displays and manages elements for photographer.html */
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
 
 // Keep the list of items of a photographer 
 let listItem = []; 
 
-// Adds the id of a photographer
+// Gets the id of a photographer in URL link
 function getParamsId() {
     const urlSearchParams =  new URL(document.location).searchParams;
     const idURL = urlSearchParams.get("id");
     return idURL
 }
 
-// 
+// Gets photographers array in photographers.json
 async function getPhotographers() {
     const response = await fetch("../data/photographers.json"); 
     const dataAPI =  await response.json();
     return dataAPI.photographers
 }
 
+// Gets media array in photographers.json
 async function getMediaArray() {
   const response = await fetch("../data/photographers.json"); 
   const dataAPI =  await response.json();
   return dataAPI.media
 }
 
+// Links photographers' id with the id in URL to take and displays their data 
 async function getPhotographerById(id) {
     const photographers = await getPhotographers();
     for(let i = 0; i < photographers.length; i++) {
@@ -34,6 +36,7 @@ async function getPhotographerById(id) {
     }
 }
 
+// Links photographers' id with media's id to take and displays media in each photographer's page 
 async function getMediaArraysById(id) {
     const media = await getMediaArray();
     media.forEach((item) => {
@@ -44,7 +47,7 @@ async function getMediaArraysById(id) {
     return listItem
 }
 
-
+// Sorts media's photographers
 const selectSort = document.querySelector('.select');
 selectSort.addEventListener('change', (event) => {
     const selectedOption = event.target.value;
@@ -67,6 +70,7 @@ selectSort.addEventListener('change', (event) => {
     }
 });
 
+// Adds all media likes of a photographer 
 async function addMediaLikes(media){
     let addLikes = 0;  
     media.forEach((item) => {
@@ -75,6 +79,7 @@ async function addMediaLikes(media){
     return addLikes
 }
 
+// Takes price of a photograopher 
 async function getPriceFromArray(photographer) {
     if (!photographer) {
         return 0;
@@ -86,11 +91,12 @@ async function getPriceFromArray(photographer) {
     return getPrice 
 }
 
+/*These following functions display elements in the page */
 
 async function displayDataPhotographer(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
     const photographerModel = photographerFactory(photographer);
-    const userCardDOM = photographerModel.getIdentity();
+    const userCardDOM = photographerModel.getIdentityPhotographers();
     photographersSection.appendChild(userCardDOM);
 }
 
@@ -106,20 +112,8 @@ async function displayNamePhotographer(photographer) {
 async function displayImgPhotographer(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
     const photographerModel = photographerFactory(photographer);
-    const userImg = photographerModel.getImg();
+    const userImg = photographerModel.getPhotographersPicture();
     photographersSection.appendChild(userImg);
-}
-
-
-// Function that gathers all likes 
-export let pricePhotographer = await getPriceFromArray(await getPhotographerById(getParamsId()));
-export let mediaLikesResults = await addMediaLikes(await getMediaArraysById(getParamsId()));
-console.log(mediaLikesResults);
-async function displayMediaLikes(photographers) {
-    const bloc = document.querySelector("#main-photographer");
-    const mediaModel = mediaFactory(photographers);
-    const userMedia = mediaModel.encartLikes();
-    bloc.appendChild(userMedia);
 }
 
 
@@ -252,6 +246,18 @@ async function displayMediaItem(photographers) {
     
 }
 
+// Displays insert's elements 
+export let pricePhotographer = await getPriceFromArray(await getPhotographerById(getParamsId()));
+export let mediaLikesResults = await addMediaLikes(await getMediaArraysById(getParamsId()));
+console.log(mediaLikesResults);
+async function displayMediaLikes(photographers) {
+    const bloc = document.querySelector("#main-photographer");
+    const mediaModel = mediaFactory(photographers);
+    const userMedia = mediaModel.insertLikes();
+    bloc.appendChild(userMedia);
+}
+
+// Calls displays functions 
 async function init() {  
     const idPhotographer  = getParamsId(); 
     const photographer = await getPhotographerById(idPhotographer);

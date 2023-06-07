@@ -1,9 +1,11 @@
+// Creates photographers cards in index.html
+
 export function photographerFactory(data) {
-    
+    /* Consts */
     const { name, id, city, country, tagline, price, portrait } = data;
-   
     const picture = `assets/photographers/${portrait}`;
     
+    /* Functions */
     function getUserCardDOM() {
         const anchor = document.createElement('a');
         anchor.setAttribute("href", "photographer.html?id=" + id);
@@ -31,7 +33,7 @@ export function photographerFactory(data) {
         anchor.appendChild(article);
         return (anchor);
     }
-    function getIdentity() {
+    function getIdentityPhotographers() {
         const blocIdentity = document.createElement('div');
         blocIdentity.classList.add('bloc-identity');
         const namePhotographer = document.createElement('h1');
@@ -47,7 +49,7 @@ export function photographerFactory(data) {
         blocIdentity.appendChild(taglinePhotographer);
         return (blocIdentity);
     }
-     function getImg() {
+     function getPhotographersPicture() {
         const blocImg = document.createElement('div');
         blocImg.classList.add('bloc-img');
         const img = document.createElement('img');
@@ -56,6 +58,7 @@ export function photographerFactory(data) {
         blocImg.appendChild(img);
         return(blocImg)
      }
+     // Gets photographer's name for contact form 
      function getFormName() {
          const formName = document.createElement('p');
          formName.classList.add('form-name');
@@ -63,6 +66,6 @@ export function photographerFactory(data) {
          return(formName)
      }
 
-    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM, getIdentity, getImg, getFormName}
+    return { name, id, picture, city, country, tagline, price, portrait, getUserCardDOM, getIdentityPhotographers, getPhotographersPicture, getFormName}
 }
 

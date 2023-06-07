@@ -9,22 +9,20 @@ const logo = document.querySelector('.logo-fisheye');
 
 // Navigates inside the modal with Tab 
 function navigateModal(event) {
-  
   if (event.key === 'Tab' || event.keyCode === 9) {
-      if (event.shiftKey) {
-        if (document.activeElement === closeLightboxButton) {
-          event.preventDefault();
-          nextButton.focus();
-        }
-      } else {
-        if (document.activeElement === nextButton) {
-          event.preventDefault();
-          closeLightboxButton.focus();
-        }
+    if (event.shiftKey) {
+      if (document.activeElement === closeLightboxButton) {
+        event.preventDefault();
+        nextButton.focus();
+      }
+    } else {
+      if (document.activeElement === nextButton) {
+        event.preventDefault();
+        closeLightboxButton.focus();
       }
     }
+  }
 }
-
   
 // Closes the modal with Escape
 function closeModalEscape(event) {
@@ -38,7 +36,6 @@ function closeModalLightbox() {
     lightboxContainer.setAttribute('aria-hidden', 'true');
     bodyWrapper.setAttribute('aria-hidden', 'false');
     logo.focus();
-    
 }
 
 function noClickModal(e) {

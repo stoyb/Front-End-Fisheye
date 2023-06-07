@@ -12,6 +12,7 @@ function getParamsId() {
     return idURL
 }
 
+// 
 async function getPhotographers() {
     const response = await fetch("../data/photographers.json"); 
     const dataAPI =  await response.json();
@@ -123,7 +124,7 @@ async function displayMediaLikes(photographers) {
 
 
 const photographersSection = document.querySelector("#main-photographer");
-const bloc = document.createElement('div');
+const bloc = document.createElement('section');
 bloc.classList.add("contain-media");
 async function displayMediaItem(photographers) {
     photographersSection.appendChild(bloc);
@@ -136,7 +137,10 @@ async function displayMediaItem(photographers) {
         lightboxContainer.style.display = "block";
         lightboxContainer.setAttribute('aria-hidden', 'false');
         bodyWrapper.setAttribute('aria-hidden', 'true');
-        prevButton.focus();
+        const closeLightboxButton = document.querySelector('.close-lightbox-button');
+        setTimeout(function() {
+            closeLightboxButton.focus();
+          }, 0);
         if(document.querySelector('.bloc-media__carousel')) {
             document.querySelector('.bloc-media__carousel').remove() ;
         }
@@ -192,7 +196,7 @@ async function displayMediaItem(photographers) {
         let userMediaLikesLegend
         let mediaLikesNumber = media.likes;
         let everClicked = false;
-        const blocMedia = document.createElement('div');
+        const blocMedia = document.createElement('article');
         blocMedia.classList.add('bloc-media');
         blocMedia.setAttribute('data-index', index);
         if (media.image) {

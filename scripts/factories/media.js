@@ -62,7 +62,7 @@ export function mediaFactory(data) {
         const iconHeart = document.createElement('em');
         iconHeart.classList.add("fa", "fa-heart");
         iconHeart.setAttribute("aria-label", "likes");
-        const mediaLegendLikes = document.createElement('p');
+        const mediaLegendLikes = document.createElement('button');
         mediaLegendLikes.classList.add('media-legend__likes');
         mediaLegendLikes.textContent = likes + " ";
         iconContainer.appendChild(iconHeart);

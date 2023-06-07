@@ -1,24 +1,30 @@
+.photograph-header, .sort-system, .lightbox__modal header, .lightbox__flex, .media-legend, .bloc-encart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
     width: 84%;
 }
 
-.contact_button {
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    padding: 8px 2px;
-    width: 120px;
-    height: 50px;
+.contact_button, select {
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
+    color: #FFF;
+}
+.contact_button, .sort-system > label, select {
+    font-size: 16px;
+    font-weight: 700;
+}
+.contact_button {
+    padding: 8px 2px;
+    width: 120px;
+    height: 50px;
     cursor: pointer;
     order: 2;
 }
@@ -51,21 +57,11 @@
     border: 2px solid #95FFF9;
     border-radius: 50%;
     object-fit: cover;
-    
 }
 
 .sort-system {
-    display: flex;
-    flex-direction: row;
     column-gap: 30px;
     margin: 20px 100px;
-    
-}
-
-.sort-system > label, select {
-    font-size: 16px;
-    font-weight: 700;
-    
 }
 
 #lightbox {
@@ -89,19 +85,18 @@
 }
 
 .lightbox__modal header {
-    display: flex;
-    flex-direction: row;
     justify-content: end;
-    align-items: center;
     height: 90px;
     padding: 0 10px;
 }
 
 .lightbox__flex {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
+}
+
+.arrow-left, .arrow-right, .close-lightbox-button, .close-modal-button, .bloc-media, .bloc-image, .bloc-video {
+    border:none;
+    background-color: transparent;
 }
 
 .arrow-left, .arrow-right {
@@ -109,8 +104,6 @@
     font-size: 42px;
     padding: 36px;
     margin-top: 60px;
-    border:none;
-    background-color: transparent;
 }
 
 .carousel{
@@ -164,11 +157,12 @@
     font-weight: normal;
     margin: 0;
 }
-
-form {
+form, form div {
     display: flex;
-    width: 100%;
     flex-direction: column;
+    width: 100%;
+}
+form {
     align-items: flex-start;
     margin-top: 12px;
 }
@@ -179,9 +173,6 @@ form label {
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
 }
@@ -203,8 +194,6 @@ form textarea {
 
 .close-modal-button, .bloc-media {
     z-index: 1;
-    border: none;
-    background-color: transparent;
 }
 
 .close-modal {
@@ -219,16 +208,13 @@ form textarea {
 
 .bloc-image  img {
     border-radius: 5px;
-   
 }
 
-.bloc-image, .bloc-video {
-    border: none;
-    background-color: transparent;
+.contain-media, .contain-media > article.bloc-media {
+    display: grid;
 }
 
 .contain-media {
-    display: grid;
     grid-template-columns: 236px 236px 236px;
     justify-content: space-between;
     row-gap: 2%;
@@ -236,17 +222,14 @@ form textarea {
     width:84%;
 }
 
-.contain-media > article.bloc-media {
-    display: grid;
+.media-legend, .bloc-encart {
+    justify-content: space-between; 
 }
 
 .media-legend {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-    align-items: center;
     padding: 0 4px;
 }
+
 .media-legend__title, .media-legend__likes {
     color: #901C1C;
     margin: 4px 0;
@@ -268,10 +251,6 @@ form textarea {
 }
 
 .bloc-encart {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     width: 200px;
     background-color: #DB8876;
     position:fixed;
@@ -284,38 +263,25 @@ form textarea {
 .bloc-likes > p {
     color: #000;
     font-weight: 500;
-
 }
 
-.bloc-media__carousel .media-legend__title, .bloc-media__carousel img, .bloc-media__carousel video {
+.bloc-media__carousel .media-legend__title, .bloc-media__carousel img, .bloc-media__carousel video, .media-legend-lightbox {
     position: relative;
     bottom:70px;
 }
+
 .bloc-media__carousel img, .bloc-media__carousel video {
     width: 750px;
     height: 600px;
     object-fit: cover;
 }
 
-.media-legend-lightbox {
-    position: relative;
-    bottom: 70px;
-}
-
 select {
-    background-color: #901C1C;
-    color: #FFF;
-    border: none;
-    border-radius: 5px;
     padding: 12px;
     letter-spacing: 0.5px;
 }
 
-.close-lightbox-button {
-
-    background-color: transparent;
-    border: none;
-}
+ 
 
 
 

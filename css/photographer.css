@@ -89,7 +89,7 @@
 .lightbox__modal header {
     justify-content: end;
     height: 90px;
-    padding: 0 10px;
+    width: 98%;
 }
 
 .lightbox__flex {
@@ -267,6 +267,10 @@ form textarea {
     font-weight: 500;
 }
 
+.bloc-media__carousel {
+    display: grid;
+    justify-content: center;
+}
 .bloc-media__carousel .media-legend__title, .bloc-media__carousel img, .bloc-media__carousel video, .media-legend-lightbox {
     position: relative;
     bottom:70px;
@@ -276,6 +280,8 @@ form textarea {
     width: 750px;
     height: 600px;
     object-fit: cover;
+    margin: 0 auto;
+    display: block;
 }
 
 select {
